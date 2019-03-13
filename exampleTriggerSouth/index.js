@@ -17,11 +17,11 @@ module.exports = async function (context, req) {
     ]
 
     if (req.query.name || (req.body && req.body.name)) {
-        if(req.query.withPhrase || (req.body && req.body.withPhrase)){
+        if(req.query.withPhrase === "true" || (req.body && req.body.withPhrase === "true" )){
 
         context.res = {
             // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name) + " " + (req.query.withPhrase || req.body.withPhrase)
+            body: "Hello " + (req.query.name || req.body.name) + ", remember... " + phrases[Math.floor(Math.random() * 10)]
         }
         }else {
             context.res = {
